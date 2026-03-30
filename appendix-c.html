@@ -16,9 +16,10 @@ html {
 
 body {
   margin: 0;
-  padding: 0 1em;
+  padding: 0.7in 1em 0 1em;
   font-size: 16pt;
   line-height: 1.2;
+  position: relative;
 }
 
 @page {
@@ -56,26 +57,47 @@ pre code {
   background: transparent;
 }
 
-table {
+.table-scroll-wrap {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   margin: 1em 0;
+}
+
+.table-scroll-wrap table {
+  margin: 0;
   border: 1px solid #aaa;
   border-collapse: collapse;
   border-spacing: 0;
-  display: block;
-  width: fit-content;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  width: max-content;
+  max-width: none;
+}
+
+.table-scroll-wrap table.normal-table th,
+.table-scroll-wrap table.normal-table td {
+  padding: .25em .5em;
+  white-space: nowrap;
+}
+
+.table-scroll-wrap table.wide-matrix-table {
+  font-size: 0.72em;
+}
+
+.table-scroll-wrap table.wide-matrix-table th,
+.table-scroll-wrap table.wide-matrix-table td {
+  padding: .12em .22em;
+  white-space: nowrap;
 }
 
 th {
-  padding: .25em .5em;
   background: #efefef;
   border: 1px solid #ccc;
 }
 
 td {
-  padding: .25em .5em;
   border: 1px solid #ccc;
 }
 
@@ -93,6 +115,7 @@ table.align-field-titles-values {
 table.align-field-titles-values td {
   border: none;
   padding: 2px 4px;
+  white-space: normal;
 }
 
 table.align-field-titles-values td:first-child {
@@ -149,6 +172,30 @@ h6 + ol {
   margin-top: 0;
 }
 
+.modified-stamp {
+  position: fixed;
+  font-size: 10pt;
+  line-height: 1.1;
+  color: #999;
+  z-index: 9999;
+  pointer-events: none;
+  white-space: nowrap;
+  top: auto;
+  bottom: auto;
+  right: auto;
+  left: auto;
+}
+
+.modified-stamp.position-1 {
+  top: 0.5in;
+  right: 0.75in;
+}
+
+.modified-stamp.position-0 {
+  bottom: 0.5in;
+  right: 0.75in;
+}
+
 @media print {
   body {
     font-size: 12pt;
@@ -159,166 +206,276 @@ h6 + ol {
   }
 
   table {
+    border-color: #aaa;
+  }
+
+  th {
+    background: #efefef;
+    border-color: #ccc;
+  }
+
+  td {
+    border-color: #ccc;
+  }
+
+  .table-scroll-wrap {
+    overflow: visible;
+    width: auto;
+    max-width: none;
+    margin: 1em 0;
+  }
+
+  .table-scroll-wrap table {
     display: table;
     width: auto;
     max-width: none;
-    overflow: visible;
+    font-size: 0.9em;
+  }
+
+  .table-scroll-wrap table.wide-matrix-table {
+    font-size: 0.72em;
+  }
+
+  .modified-stamp {
+    position: fixed;
+    font-size: 10pt;
+    line-height: 1.1;
+    color: #999;
+    z-index: 9999;
+    top: auto;
+    bottom: auto;
+    right: auto;
+    left: auto;
+  }
+
+  .modified-stamp.position-1 {
+    top: 0.5in;
+    right: 0.75in;
+  }
+
+  .modified-stamp.position-0 {
+    bottom: 0.5in;
+    right: 0.75in;
   }
 }
 </style>
 </head>
 <body>
+<div class="modified-stamp position-1">Modified: 3/30/2026 16:17:59</div>
 
 <!-- ↩️ [[Care Plan — Index of Documents]] -->
+
 <div style="text-align:center; font-size:1.6em; font-weight:bold; line-height:0.9; margin-top:0; margin-bottom:0.2em;">
 Judith A McMahon — Care Plan
 </div>
+
 <div style="text-align:center; font-size:1.6em; font-weight:bold; line-height:0.9; margin-top:0.4em; margin-bottom:1.2em;">
 Appendix C: Financial Admission Narrative — Assisted Living Placement
 </div>
+
 <h2>1. Purpose</h2>
+
 <p>This appendix provides a clear and concise financial narrative to support assisted living admission review.<br />
-It is intended to demonstrate the resident’s ability to meet private-pay requirements through a combination of current liquid assets and a defined, near-term liquidity event.</p>
+It is intended to demonstrate the resident’s ability to meet private-pay requirements through a combination of current liquid assets, recurring income, and a defined near-term real estate liquidity event.</p>
+
 <hr />
+
 <h2>2. Resident Financial Position (Current)</h2>
+
 <h3>Liquid Assets (Pre-Home Sale)</h3>
-<table>
+
+<div class="table-scroll-wrap"><table class="normal-table">
+<colgroup>
+<col />
+<col style="text-align:right;"/>
+</colgroup>
+
 <thead>
 <tr>
-<th>Asset</th>
-<th>Amount</th>
+	<th> Asset </th>
+	<th style="text-align:right;"> Amount </th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td>Brokerage</td>
-<td>$150,000</td>
+	<td> Brokerage </td>
+	<td style="text-align:right;"> $191,841 </td>
 </tr>
 <tr>
-<td>Checking</td>
-<td>$30,000</td>
+	<td> Traditional IRA (Non-Roth) </td>
+	<td style="text-align:right;"> $126,292 </td>
 </tr>
 <tr>
-<td>Vehicle (estimated sale)</td>
-<td>$11,500</td>
+	<td> Checking </td>
+	<td style="text-align:right;"> $23,000 </td>
 </tr>
 <tr>
-<td><strong>Total Liquid Assets</strong></td>
-<td><strong>$191,500</strong></td>
+	<td> Vehicle (estimated sale) </td>
+	<td style="text-align:right;"> $10,000 </td>
+</tr>
+<tr>
+	<td> <strong>Total Liquid Assets</strong> </td>
+	<td style="text-align:right;"> <strong>$351,133</strong> </td>
 </tr>
 </tbody>
-</table>
+</table></div>
+
 <hr />
+
 <h2>3. Monthly Funding Structure</h2>
+
 <p>The resident contributes monthly income toward care costs, with the remaining balance funded through available assets.</p>
-<table>
+
+<div class="table-scroll-wrap"><table class="normal-table">
+<colgroup>
+<col />
+<col style="text-align:right;"/>
+</colgroup>
+
 <thead>
 <tr>
-<th>Component</th>
-<th>Amount</th>
+	<th> Component </th>
+	<th style="text-align:right;"> Amount </th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td>Monthly Care Cost*</td>
-<td>$11,000</td>
+	<td> Monthly Care Cost* </td>
+	<td style="text-align:right;"> $11,000 </td>
 </tr>
 <tr>
-<td>Social Security Income</td>
-<td>($3,300)</td>
+	<td> Social Security Income </td>
+	<td style="text-align:right;"> ($3,193) </td>
 </tr>
 <tr>
-<td><strong>Net Monthly Shortfall</strong></td>
-<td><strong>$7,700</strong></td>
+	<td> <strong>Net Monthly Shortfall</strong> </td>
+	<td style="text-align:right;"> <strong>$7,807</strong> </td>
 </tr>
 </tbody>
-</table>
-<p>*Final care cost will be based on the selected facility.</p>
+</table></div>
+
+<p>*Final care cost will be based on the selected facility and level of care.</p>
+
 <hr />
+
 <div style="page-break-before: always;"></div>
+
 <h2>4. Private Pay Coverage (Pre-Home Sale)</h2>
+
 <p>Based on current liquid assets:</p>
-<p>$191,500 ÷ $7,700 ≈ <strong>24.9 months of private-pay coverage</strong></p>
+
+<p>$351,133 ÷ $7,807 ≈ <strong>45.0 months of private-pay coverage</strong></p>
+
 <h3>Interpretation</h3>
+
 <ul>
-<li>Meets or exceeds typical ~24-month private-pay requirement</li>
-<li>Provides a buffer above minimum threshold</li>
-<li>Does not rely on future asset liquidation to qualify</li>
+<li>Significantly exceeds a typical <sub>24</sub>-month private-pay requirement</li>
+<li>Provides approximately <strong>3.7 years of private-pay coverage</strong> prior to home sale</li>
+<li>Provides a substantial buffer above standard admission thresholds</li>
+<li>Demonstrates strong independent qualification without immediate reliance on real estate liquidation</li>
 </ul>
+
 <hr />
+
 <h2>5. Real Estate Asset (Planned Liquidity Event)</h2>
-<table>
+
+<div class="table-scroll-wrap"><table class="normal-table">
+<colgroup>
+<col />
+<col style="text-align:right;"/>
+</colgroup>
+
 <thead>
 <tr>
-<th>Item</th>
-<th>Amount</th>
+	<th> Item </th>
+	<th style="text-align:right;"> Amount </th>
 </tr>
 </thead>
+
 <tbody>
 <tr>
-<td>Estimated Market Value</td>
-<td>$550,000</td>
+	<td> Estimated Market Value </td>
+	<td style="text-align:right;"> $550,000 </td>
 </tr>
 <tr>
-<td>Mortgage Balance</td>
-<td>($125,000)</td>
+	<td> Mortgage Balance </td>
+	<td style="text-align:right;"> ($125,000) </td>
 </tr>
 <tr>
-<td><strong>Estimated Net Proceeds</strong></td>
-<td><strong>$425,000</strong></td>
+	<td> <strong>Estimated Net Proceeds</strong> </td>
+	<td style="text-align:right;"> <strong>$425,000</strong> </td>
 </tr>
 </tbody>
-</table>
+</table></div>
+
 <p>This asset represents a defined and near-term source of additional liquidity.</p>
+
 <hr />
+
 <h2>6. Transition &amp; Sale Plan</h2>
+
 <ul>
-<li>
-<p>Resident will transition to assisted living</p>
-</li>
-<li>
-<p>A short transition period (~60 days) will be used to:</p>
-<ul>
-<li>Allow orderly relocation of co-resident</li>
-<li>Prepare the home for sale</li>
+<li><p>Resident will transition to assisted living</p></li>
+<li><p>A short transition period (<sub>60</sub> days) will be used to:</p></li>
+<li><p> Allow orderly relocation of co-resident</p></li>
+<li><p> Prepare the home for sale</p></li>
+<li><p>Property will be:</p></li>
+<li><p> Prepared and listed promptly</p></li>
+<li><p> Actively marketed</p></li>
+<li><p> Sold in the near term following admission</p></li>
 </ul>
-</li>
-<li>
-<p>Property will be:</p>
-<ul>
-<li>Prepared and listed promptly</li>
-<li>Actively marketed</li>
-<li>Sold in the near term following admission</li>
-</ul>
-</li>
-</ul>
+
+<p>This approach balances orderly transition planning with prompt conversion of the home into liquid care-funding assets.</p>
+
 <hr />
+
+<div style="page-break-before: always;"></div>
+
 <h2>7. Post-Sale Financial Position</h2>
+
 <p>Following the sale of the residence:</p>
+
 <ul>
-<li>Total available assets are expected to exceed <strong>$600,000</strong></li>
+<li>Total available assets are expected to approximate <strong>$776,133</strong></li>
 </ul>
+
 <p>This supports:</p>
+
 <ul>
-<li><strong>5+ years of private-pay care</strong> at current cost assumptions</li>
+<li>approximately <strong>8.3 years of private-pay care</strong> at current cost assumptions</li>
 </ul>
+
+<p>Calculation:</p>
+
+<p>$776,133 ÷ $7,807 ≈ <strong>99.4 months</strong></p>
+
 <hr />
+
 <h2>8. Risk Mitigation</h2>
+
 <ul>
 <li>Current liquid assets independently satisfy admission requirements</li>
-<li>Home sale provides substantial additional funding</li>
+<li>Home sale provides substantial additional long-term funding</li>
 <li>Defined and near-term liquidation plan is in place</li>
 <li>No reliance on speculative or uncertain funding sources</li>
+<li>Funding structure supports continuity of care through progression of needs</li>
 </ul>
+
 <hr />
+
 <h2>9. Conclusion</h2>
+
 <p>The resident presents with a strong and well-structured financial position:</p>
+
 <ul>
-<li>Current liquid assets support approximately <strong>25 months of private-pay care</strong></li>
+<li>Current liquid assets support approximately <strong>45 months of private-pay care</strong></li>
 <li>A near-term home sale provides significant additional liquidity</li>
+<li>Total projected assets support approximately <strong>8+ years of private-pay care</strong></li>
 <li>The overall plan ensures continuity of care well beyond standard facility requirements</li>
 </ul>
-<p>This financial structure is stable, executable, and designed to fully support long-term care needs without interruption.</p>
 
+<p>This financial structure is stable, executable, and designed to support long-term care needs without interruption.</p>
 </body>
 </html>
